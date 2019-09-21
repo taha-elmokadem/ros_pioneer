@@ -54,6 +54,19 @@ rosrun sicktoolbox_wrapper sicklms _port:=/dev/ttyUSB1 _baud:=38400
 roslaunch pioneer navigation.launch
 ```
 
+## Realsenese
+```bash
+roslaunch realsense2_camera rs_camera.launch 
+```
+For pointcloud
+```bash
+roslaunch realsense2_camera rs_camera.launch filters:=pointcloud 
+```
+To view use rviz or 
+```bash
+ rqt_image_view /camera/color/image_raw/compressed
+```
+
 ## Limitations
 The planner parameters are not tuned so it is slow and has difficult turning see turtlbot3_navigation/config/ to tune  
 The odom messages are slow which may cause issues with the SLAM if so slow down or try SLAM without odom??  
