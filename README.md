@@ -6,7 +6,9 @@ http://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
 ## Launching pioneer
 open a terminal (ctr-alt-t) and type 
+```bash
 roscore
+```
 open a new terminal window (ctrl-shift-t) log into the pioneer
 ```bash
 ssh mbzirc@nuc4
