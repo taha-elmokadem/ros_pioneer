@@ -5,15 +5,11 @@ copied from the turltebot3 with a few small changes see here
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
 ## Launching pioneer
-open a terminal (ctr-alt-t) and type 
-```bash
-roscore
-```
-open a new terminal window (ctrl-shift-t) log into the pioneer
+open a terminal (ctr-alt-t) and ssh into the pioneer
 ```bash
 ssh mbzirc@nuc4
 ```
-then
+then 
 ```bash
 roslaunch pioneer bringup.launch
 ```
@@ -21,6 +17,7 @@ The pioneer should be beep
 The robot should now be online (if it failed (red text) see the debugging help)
 to test open a new terminal window (ctrl-shift-t)
 ```bash
+nuc4_setROS
 rostopic list
 ```
 should see something like
@@ -44,12 +41,13 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel
 ### Debugging
 Check that the green stat light is flashing slowly 
 If flashing fast press the red reset button 
-Check that the ttyUSB are around the right way ATM ttyUSB0 = pionner ttyUSB1 = sick 
-can be launched indvidually with 
+Check that the ttyUSB are set correctly ATM ttyUSB0 = pionner ttyUSB1 = sick    
+can be launched indvidually with    
 ```bash
 rosrun rosaria RosAria _port:=/dev/ttyUSB0 
 rosrun sicktoolbox_wrapper sicklms _port:=/dev/ttyUSB1 _baud:=38400 
 ```
+If they are not edit it in ~/catkin_ws/src/ros_pioneer/launch/bringup.launch
     
 ## Launching Nav
 ```bash
