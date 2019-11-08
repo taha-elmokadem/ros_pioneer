@@ -4,7 +4,12 @@ Simple ROS launch files for the pionner based of the turtlebot3
 copied from the turltebot3 with a few small changes see here
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
-## Launching pioneer
+## Launching Pioneer
+navigate to http://nuc4/process.php and turn on the required nodes
+![alt text](https://github.com/Scouttman/ros_pioneer/blob/master/launch_page.png "procmon")
+
+## The old way
+### Launching pioneer
 open a terminal (ctr-alt-t) and ssh into the pioneer
 ```bash
 ssh mbzirc@nuc4
@@ -38,7 +43,7 @@ you can drive it around now with
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel 
 ```
 
-### Debugging
+#### Debugging
 Check that the green stat light is flashing slowly 
 If flashing fast press the red reset button 
 Check that the ttyUSB are set correctly ATM ttyUSB0 = pionner ttyUSB1 = sick    
@@ -49,12 +54,12 @@ rosrun sicktoolbox_wrapper sicklms _port:=/dev/ttyUSB1 _baud:=38400
 ```
 If they are not edit it in ~/catkin_ws/src/ros_pioneer/launch/bringup.launch
     
-## Launching Nav
+### Launching Nav
 ```bash
 roslaunch pioneer navigation.launch
 ```
 
-## Realsenese
+### Realsenese
 ```bash
 roslaunch realsense2_camera rs_camera.launch 
 ```
@@ -78,5 +83,6 @@ The nuc is mbzirc@nuc4
 check out ~/.bashrc   
 roscd package to go there i.e. roscd pioneer  
 have a look at the launch files in pioneer/launch/  
+procmon runs the web interface
     
 
