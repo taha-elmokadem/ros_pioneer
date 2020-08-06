@@ -1,15 +1,15 @@
 <launch>
   <!-- Start the Robot-->
   <node pkg="rosaria" type="RosAria" name="RosAria" required="true" output="screen" >
-    <param name="port" value="/dev/ttyUSB0"/>
+    <param name="port" value="/dev/ttyPioneer"/>
   </node>
 
   <!-- Wait for Pionner to stop mucking with the com port-->
   <arg name="node_start_delay" default="4.0"/> 
 
   <!-- Start the Lidar -->
-  <node pkg="sicktoolbox_wrapper" type="sicklms" name="sicklms" required="true" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@'">
-    <param name="port" value="/dev/ttyUSB1"/>
+<node pkg="sicktoolbox_wrapper" type="sicklms" name="sicklms" required="true" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@'">
+    <param name="port" value="/dev/ttySick"/>
     <param name="baud" value="38400"/>
   </node>
 
@@ -18,5 +18,4 @@
         type="static_transform_publisher"
         name="link1_broadcaster"
         args="0 0 0 0 0 0 base_link laser 100" />
-
 </launch>
