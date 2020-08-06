@@ -1,6 +1,7 @@
 <launch>
   <!-- Start the Robot-->
   <node pkg="rosaria" type="RosAria" name="RosAria" required="true" output="screen" >
-    <param name="port" value="/dev/ttyUSB1"/>
+    <param name="port" value="/dev/ttyPioneer"/> <!--pioneer-->
   </node>
+
 </launch>
