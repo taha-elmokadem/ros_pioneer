@@ -4,28 +4,25 @@ Simple ROS launch files for the pionner based of the turtlebot3
 copied from the turltebot3 with a few small changes see here
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
-## Launching Pioneer
-navigate to http://nuc4/process.php and turn on the required nodes
-![alt text](https://github.com/Scouttman/ros_pioneer/blob/master/launch_page.png "procmon")
-
-## The old way
 ### Launching pioneer
 open a terminal (ctr-alt-t) and ssh into the pioneer
 ```bash
-ssh mbzirc@nuc4
+ssh sc-staff@HOSTNAME
 ```
-then 
+where HOSTNAME is your robot's name (written on the robot). If some problems are found where the hostname cannot be resolved, use the robot's ip to connect.
+Then, run
 ```bash
 roslaunch pioneer bringup.launch
 ```
-The pioneer should be beep
+The pioneer should be beep.
 The robot should now be online (if it failed (red text) see the debugging help)
-to test open a new terminal window (ctrl-shift-t)
+to test open a new terminal window (on your local computer connected to the same network), and run
 ```bash
-nuc4_setROS
+export ROS_MASTER_URI=http://HOSTNAME:11311
 rostopic list
 ```
-should see something like
+by replacing HOSTNAME with your robot name.
+To verify that the robot is working properly, you should see something like
 ```bash
     /RosAria/.
     ....
@@ -46,7 +43,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel
 #### Debugging
 Check that the green stat light is flashing slowly 
 If flashing fast press the red reset button 
-Check that the ttyUSB are set correctly ATM ttyUSB0 = pionner ttyUSB1 = sick    
+Check that the ttyUSB are set correctly ATM ttyUSB0 = ttyPionner, ttyUSB1 = ttySick    
 can be launched indvidually with    
 ```bash
 rosrun rosaria RosAria _port:=/dev/ttyUSB0 
